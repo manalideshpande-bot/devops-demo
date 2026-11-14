@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Fetching source code from GitHub'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t github-jenkins-docker-demo .'
+                echo 'Docker image built successfully!'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Docker image build completed successfully!'
+            }
+        }
+    }
+}
